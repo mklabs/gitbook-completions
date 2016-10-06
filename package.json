@@ -1,0 +1,22 @@
+{
+  "name": "gitbook-completions",
+  "version": "1.0.0",
+  "description": "",
+  "bin": "bin/gitbook-complete.js",
+  "scripts": {
+    "install": "tabtab install --name gitbook --completer gitbook-completions --auto",
+    "uninstall": "tabtab uninstall --name gitbook --auto",
+    "test": "export cmd=\"gitbook \" && DEBUG=\"tabtab*\" COMP_POINT=\"8\" COMP_LINE=\"$cmd\" COMP_CWORD=\"$cmd\" gitbook-completions completion --json"
+  },
+  "keywords": ["tabtab"],
+  "license": "ISC",
+  "dependencies": {
+    "tabtab": "^2.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.7.1",
+    "eslint-config-standard": "^6.2.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.1"
+  }
+}
