@@ -6,9 +6,12 @@
   "scripts": {
     "install": "tabtab install --name gitbook --completer gitbook-completions --auto",
     "uninstall": "tabtab uninstall --name gitbook --auto",
-    "test": "export cmd=\"gitbook \" && DEBUG=\"tabtab*\" COMP_POINT=\"8\" COMP_LINE=\"$cmd\" COMP_CWORD=\"$cmd\" gitbook-completions completion --json"
+    "test": "mocha -R spec",
+    "test-completion": "export cmd=\"gitbook fetch \" && DEBUG=\"tabtab*\" COMP_POINT=\"14\" COMP_LINE=\"$cmd\" COMP_CWORD=\"$cmd\" gitbook-completions completion --json"
   },
-  "keywords": ["tabtab"],
+  "keywords": [
+    "tabtab"
+  ],
   "license": "ISC",
   "dependencies": {
     "tabtab": "^2.0.1"
@@ -17,6 +20,8 @@
     "eslint": "^3.7.1",
     "eslint-config-standard": "^6.2.0",
     "eslint-plugin-promise": "^2.0.1",
-    "eslint-plugin-standard": "^2.0.1"
+    "eslint-plugin-standard": "^2.0.1",
+    "gitbook-cli": "^2.3.0",
+    "mocha": "^3.1.0"
   }
 }

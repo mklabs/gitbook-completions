@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 
+var fs = require('fs');
+var path = require('path');
+var versions = require('../lib/versions');
+var config = require('gitbook-cli/lib/config');
+
 var tabtab = require('tabtab')({
   name: 'gitbook',
   cache: false
@@ -23,7 +28,11 @@ tabtab.on('gitbook', function (data, done) {
     'init:setup and create files for chapters',
     'pdf:build a book into an ebook file',
     'epub:build a book into an ebook file',
-    'mobi:build a book into an ebook file'
+    'mobi:build a book into an ebook file',
+    '-h', '--help',
+    '-v', '--gitbook',
+    '-d', '--debug',
+    '-V', '--version'
   ]);
 });
 
@@ -49,11 +58,28 @@ tabtab.on('serve', function (data, done) {
   ]);
 });
 
+tabtab.on('fetch', function (data, done) {
+  if (data.prev !== 'fetch') return;
+
+  versions().then(function (result) {
+    return done(null, result);
+  });
+});
+
 tabtab.on('install', function (data, done) {
   if (data.prev !== 'install') return;
   return done(null, [
     '--log'
   ]);
+});
+
+tabtab.on('uninstall', function (data, done) {
+  if (data.prev !== 'uninstall') return;
+
+  fs.readdir(path.join(config.ROOT, 'versions'), function (err, files) {
+    if (err) return done(err);
+    return done(null, files);
+  });
 });
 
 tabtab.on('parse', function (data, done) {
