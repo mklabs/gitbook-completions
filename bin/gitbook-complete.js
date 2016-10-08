@@ -24,6 +24,7 @@ tabtab.on('gitbook', function (data, done) {
     'help:List commands for GitBook',
     'build:build a book',
     'serve:serve the book as a website for testing',
+    'install:install all plugin dependencies',
     'parse:parse and print debug information about a book',
     'init:setup and create files for chapters',
     'pdf:build a book into an ebook file',
