@@ -30,10 +30,14 @@ tabtab.on('gitbook', function (data, done) {
     'pdf:build a book into an ebook file',
     'epub:build a book into an ebook file',
     'mobi:build a book into an ebook file',
-    '-h', '--help',
-    '-v', '--gitbook',
-    '-d', '--debug',
-    '-V', '--version'
+    '-h:output usage information',
+    '--help:output usage information',
+    '-v:specify Gitbook version to use',
+    '--gitbook:specify GitBook version to use',
+    '-d:enable verbose error',
+    '--debug:enable verbose error',
+    '-V:Display running versions of gitbook and gitbook-cli',
+    '--version:Display running versions of gitbook and gitbook-cli'
   ]);
 });
 
