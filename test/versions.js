@@ -11,6 +11,8 @@ describe('lib/versions', () => {
       .then(function (result) {
         assert.equal(Array.isArray(result), true);
         assert.ok(result.indexOf('3.2.2') !== -1);
+        assert.ok(result.indexOf('pre') !== -1);
+        assert.ok(result.indexOf('latest') !== -1);
         done();
       })
       .catch(done);

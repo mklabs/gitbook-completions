@@ -4,6 +4,8 @@ var fs = require('fs');
 var path = require('path');
 var versions = require('../lib/versions');
 var config = require('gitbook-cli/lib/config');
+var completeVersions = require('../lib/completeVersions');
+var debug = require('tabtab/lib/debug')('gitbook-complete');
 
 var tabtab = require('tabtab')({
   name: 'gitbook',
@@ -11,6 +13,7 @@ var tabtab = require('tabtab')({
 });
 
 tabtab.on('gitbook', function (data, done) {
+  debug('prev', data);
   if (data.prev !== 'gitbook') return;
 
   return done(null, [
@@ -87,6 +90,13 @@ tabtab.on('uninstall', function (data, done) {
   });
 });
 
+tabtab.on('update', function (data, done) {
+  return done(null, [
+    'latest',
+    'pre'
+  ]);
+});
+
 tabtab.on('parse', function (data, done) {
   if (data.prev !== 'parse') return;
   return done(null, [
@@ -150,5 +160,8 @@ tabtab.on('--format', function (data, done) {
     'ebook'
   ]);
 });
+
+tabtab.on('-v', completeVersions);
+tabtab.on('--gitbook', completeVersions);
 
 tabtab.start();
