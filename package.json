@@ -7,7 +7,7 @@
     "install": "tabtab install --name gitbook --completer gitbook-completions --auto",
     "uninstall": "tabtab uninstall --name gitbook --auto",
     "test": "npm run lint && mocha -R spec",
-    "lint": "eslint bin/ lib/",
+    "lint": "eslint bin/ lib/ test/",
     "test-completion": "export cmd=\"gitbook fetch \" && DEBUG=\"tabtab*\" COMP_POINT=\"14\" COMP_LINE=\"$cmd\" COMP_CWORD=\"$cmd\" gitbook-completions completion --json"
   },
   "keywords": [

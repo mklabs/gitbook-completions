@@ -3,9 +3,9 @@
 var fs = require('fs');
 var path = require('path');
 var versions = require('../lib/versions');
+var book = require('../lib/book');
 var config = require('gitbook-cli/lib/config');
 var completeVersions = require('../lib/completeVersions');
-var debug = require('tabtab/lib/debug')('gitbook-complete');
 
 var tabtab = require('tabtab')({
   name: 'gitbook',
@@ -13,7 +13,6 @@ var tabtab = require('tabtab')({
 });
 
 tabtab.on('gitbook', function (data, done) {
-  debug('prev', data);
   if (data.prev !== 'gitbook') return;
 
   return done(null, [
@@ -44,8 +43,18 @@ tabtab.on('gitbook', function (data, done) {
   ]);
 });
 
+// add filesystem completion to commands with [book]
+tabtab.on('build', book);
+tabtab.on('serve', book);
+tabtab.on('parse', book);
+tabtab.on('init', book);
+tabtab.on('pdf', book);
+tabtab.on('epub', book);
+tabtab.on('mobi', book);
+
+// Commands
+
 tabtab.on('build', function (data, done) {
-  if (data.prev !== 'build') return;
   return done(null, ['--log', '--format', '--timing', '--no-timing']);
 });
 
