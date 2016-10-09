@@ -8,7 +8,7 @@ Tabtab plugin to specify completion results for
     npm install gitbook-completions -g
 
 On install, the package will add a line to source a SHELL specific config file,
-into either `~/.basrc`, `~/.zshrc` or `~/.config/fish/config.fish`.
+into either `~/.bashrc`, `~/.zshrc` or `~/.config/fish/config.fish`.
 
 On uninstall, these lines will be removed.
 
