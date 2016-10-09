@@ -33,7 +33,7 @@ On uninstall, these lines will be removed.
     debug     disabled  error     info      warn
 
 
-For ZSH, you'll additionnaly can find command / flags description:
+For ZSH, you'll additionnaly find command / flags descriptions:
 
     $ gitbook <tab>
     --debug    -d         -- enable verbose error
