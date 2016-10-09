@@ -1,6 +1,6 @@
 {
   "name": "gitbook-completions",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "bin": "bin/gitbook-complete.js",
   "scripts": {
